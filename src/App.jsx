@@ -43,17 +43,22 @@ function App() {
 
 
   const dispatch = useDispatch();
-  const { url, genres } = useSelector((state) => state.home)
 
   useEffect(() => {
-    apiTestTing();
+    fetchApiConfig();
   }, [])
 
-  const apiTestTing = () => {
-    fetchDatafromApi("/movie/popular")
+  // bắn Api giúp config ảnh cho phù hợp vì ảnh có nhiều size
+  const fetchApiConfig = () => {
+    fetchDatafromApi("/configuration")
       .then((res) => {
         console.log(res);
-        dispatch(getApiConfiguration(res))
+        const url = {
+          backdrop: res.images.base_url + "original",
+          poster: res.images.base_url + "original",
+          profile: res.images.base_url + "original",
+        }
+        dispatch(getApiConfiguration(url))
       });
   }
 

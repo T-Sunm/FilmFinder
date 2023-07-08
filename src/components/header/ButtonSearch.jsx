@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import useFetch from '../../Hooks/useFetch';
+import { useSelector } from 'react-redux';
 
 export const ButtonSearch = () => {
 
     const [query, setQuery] = useState('');
     const navigate = useNavigate();
-
-    const { data } = useFetch('/movie/upcoming');
-    console.log(data);
 
     // Cụ thể, hàm searchQueryHandler được gán cho sự kiện onKeyUp. 
     //onKeyUp là một sự kiện được kích hoạt 
