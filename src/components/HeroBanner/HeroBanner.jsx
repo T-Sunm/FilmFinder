@@ -28,45 +28,48 @@ export const HeroBanner = () => {
     }, [data]);
 
     return (
-        <Swiper
-            effect={'coverflow'}
-            centeredSlides={true}
-            loop={true}
-            slidesPerView={'auto'}
-            coverflowEffect={{
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: false
-            }}
-            pagination={{ el: '.swiper-pagination', clickable: true }}
-            navigation={{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-                clickable: true,
-            }}
-            modules={[EffectCoverflow, Pagination, Navigation]}
-            className="swiper_container"
-        >
-            {
-                movies &&
-                movies.map((movie, index) => (
-                    <SwiperSlide key={index}>
-                        <HeroBannerItem background={movie.backdrop_path} poster={movie.poster_path} id={movie.id} title={movie.title} overview={movie.overview} />
-                    </SwiperSlide>
-                ))
-            }
+        // phải bọc 1 div bên ngoài để css tránh bị ảnh hưởng các carousel khác
+        <div className='carousel-1'>
+            <Swiper
+                effect={'coverflow'}
+                centeredSlides={true}
+                loop={true}
+                slidesPerView={'auto'}
+                coverflowEffect={{
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: false
+                }}
+                pagination={{ el: '.swiper-pagination', clickable: true }}
+                navigation={{
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                    clickable: true,
+                }}
+                modules={[EffectCoverflow, Pagination, Navigation]}
+                className="swiper_container"
+            >
+                {
+                    movies &&
+                    movies.map((movie, index) => (
+                        <SwiperSlide key={index}>
+                            <HeroBannerItem background={movie.backdrop_path} poster={movie.poster_path} id={movie.id} title={movie.title} overview={movie.overview} />
+                        </SwiperSlide>
+                    ))
+                }
 
-            <div className="slider-controler">
-                <div className=" swiper-button-prev slider-arrow border ">
-                    <GrFormPrevious />
+                <div className="slider-controler">
+                    <div className=" swiper-button-prev slider-arrow border ">
+                        <GrFormPrevious />
+                    </div>
+                    <div className="swiper-button-next slider-arrow border">
+                        <GrFormNextLink />
+                    </div>
+                    <div className="swiper-pagination"></div>
                 </div>
-                <div className="swiper-button-next slider-arrow border">
-                    <GrFormNextLink />
-                </div>
-                <div className="swiper-pagination"></div>
-            </div>
-        </Swiper>
+            </Swiper>
+        </div>
     )
 }

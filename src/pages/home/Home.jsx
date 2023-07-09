@@ -4,7 +4,7 @@ import { Trending } from './Trending/Trending'
 
 export const Home = () => {
     return (
-        <div >
+        <div className='h-[100vh]' >
             <HeroBanner />
             <Trending />
         </div>

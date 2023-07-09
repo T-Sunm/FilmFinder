@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { fetchDatafromApi } from './Utils/GetdatafromApi.jsx'
 import { useDispatch, useSelector } from 'react-redux'
-import { getApiConfiguration } from './store/home-slice';
+import { getApiConfiguration, getGenres } from './store/home-slice';
 import { createBrowserRouter, RouterProvider, ScrollRestoration } from 'react-router-dom'
 
 import { Home } from './pages/home/Home';
@@ -46,19 +46,26 @@ function App() {
 
   useEffect(() => {
     fetchApiConfig();
+    fetchApiGenres();
   }, [])
 
   // bắn Api giúp config ảnh cho phù hợp vì ảnh có nhiều size
   const fetchApiConfig = () => {
     fetchDatafromApi("/configuration")
       .then((res) => {
-        console.log(res);
         const url = {
           backdrop: res.images.base_url + "original",
           poster: res.images.base_url + "original",
           profile: res.images.base_url + "original",
         }
         dispatch(getApiConfiguration(url))
+      });
+  }
+  const fetchApiGenres = () => {
+    fetchDatafromApi("/genre/movie/list?language=en")
+      .then((res) => {
+        console.log(res)
+        dispatch(getGenres(res))
       });
   }
 
