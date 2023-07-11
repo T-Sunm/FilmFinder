@@ -11,7 +11,7 @@ export const SwitchTabs = ({ data, onTabChange }) => {
         onTabChange(tab)
     }
     return (
-        <div className='bg-primary-content flex rounded-[20px] p-1 overflow-hidden'>
+        <div className='bg-primary-content rounded-[20px] p-1 overflow-hidden '>
             <div className='relative h-[30px] z-10 flex justify-center items-center '>
                 {
                     data.map((tab, index) => (

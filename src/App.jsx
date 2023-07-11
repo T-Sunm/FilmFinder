@@ -20,14 +20,14 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: '/FilmFinder/movie',
+        path: '/FilmFinder/:mediaType',
         children: [
           {
             index: true,
             element: <MoviePage />
           },
           {
-            path: '/FilmFinder/movie/:id',
+            path: '/FilmFinder/:mediaType/:id',
             element: <Details />
           }
         ]
