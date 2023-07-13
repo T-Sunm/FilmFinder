@@ -6,8 +6,8 @@ import useFetch from '../../../Hooks/useFetch'
 import { SwiperSlide, Swiper } from 'swiper/react'
 import 'swiper/css';
 
-import { TrendingItems } from '../Trending/TrendingItems';
 import { BtnCategory } from '../../../components/Button/BtnCategory';
+import { CategoryItem } from '../../../components/Category/CategoryItem';
 export const Category = ({ type, title }) => {
 
     const [endpoint, setEndPoint] = useState("movie")
@@ -65,7 +65,7 @@ export const Category = ({ type, title }) => {
         },
     };
     return (
-        <div className='px-4 '>
+        <div className='px-4 ' id={type}>
             <div className='flex items-center justify-between mb-[30px] px-10'>
                 <BtnCategory title={title} />
                 <SwitchTabs data={["Movies", "TVshows"]} onTabChange={onTabChange} />
@@ -79,7 +79,7 @@ export const Category = ({ type, title }) => {
                     >
                         {movies.map((movie, index) => (
                             <SwiperSlide key={index}   >
-                                <TrendingItems pathPoster={movie?.poster_path} voteAverage={movie?.vote_average} date={movie?.release_date} title={movie?.title} genreIds={movie?.genre_ids} />
+                                <CategoryItem pathPoster={movie?.poster_path} voteAverage={movie?.vote_average} date={movie?.release_date} title={movie?.title} genreIds={movie?.genre_ids} />
                             </SwiperSlide>
                         ))
                         }

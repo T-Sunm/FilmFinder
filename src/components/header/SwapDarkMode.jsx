@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { setTheme } from '../../store/darkmode-slice';
 
 export const SwapDarkMode = () => {
 
-    const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
+    const { theme } = useSelector((state) => state.theme)
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         localStorage.setItem("theme", theme);
@@ -14,9 +18,9 @@ export const SwapDarkMode = () => {
         // e trong hàm handleToogle chính là đối tượng sự kiện được tự động truyền vào 
         //khi sự kiện xảy ra. e.target chính là thẻ HTML gây ra sự kiện
         if (e.target.checked) {
-            setTheme("dark")
+            dispatch(setTheme("white"))
         } else {
-            setTheme("light")
+            dispatch(setTheme("black"))
         }
     }
 

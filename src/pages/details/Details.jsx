@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { Detailsbanner } from '../../components/Details/Detailsbanner';
 import { Trailer } from './Trailer';
 import Footer from '../../components/footer/Footer';
+import { CateGory } from '../../components/Category/CateGory';
 
 export const Details = () => {
     const { mediaType, id } = useParams();
@@ -31,6 +32,7 @@ export const Details = () => {
                 release={data?.release_date}
             />
             <Trailer id={id} />
+            <CateGory type={"movie"} title={"More like this"} id={id} />
             <Footer />
         </div>
     )

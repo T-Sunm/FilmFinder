@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { SwitchTabs } from '../../../components/SwitchTab/SwitchTabs'
-
-
-import useFetch from '../../../Hooks/useFetch'
+import useFetch from '../../Hooks/useFetch'
+import { BtnCategory } from '../Button/BtnCategory'
 import { SwiperSlide, Swiper } from 'swiper/react'
-import 'swiper/css';
+import { CategoryItem } from './CategoryItem'
 
-import { CategoryItem } from '../../../components/Category/CategoryItem';
-import { BtnCategory } from '../../../components/Button/BtnCategory';
-export const Trending = () => {
+export const CateGory = ({ type, title, id }) => {
 
-    const [endpoint, setEndPoint] = useState("day")
     const [movies, setMovies] = useState([])
-    const { data, loading } = useFetch(`/trending/movie/${endpoint}?language=en-US`)
+    const { data, loading } = useFetch(`/${type}/${id}/similar?language=en-US&page=1`)
     console.log(data)
     useEffect(() => {
         if (data) {
@@ -20,10 +15,6 @@ export const Trending = () => {
             console.log(movies?.title)
         }
     }, [data])
-    const onTabChange = (tab) => {
-        const lowerCaseStr = tab.toLowerCase();
-        setEndPoint(lowerCaseStr)
-    }
     const breakpoints = {
         // Hiển thị 3 slide trên viewport nhỏ hơn 640px
         320: {
@@ -66,11 +57,9 @@ export const Trending = () => {
         },
     };
     return (
-        <div className='px-4' id='trending'>
-            <div className='flex items-center justify-between mt-5 mb-[30px] relative px-10'>
-
-                <BtnCategory title={"Trending"} />
-                <SwitchTabs data={["Day", "Week"]} onTabChange={onTabChange} />
+        <div className='px-4 ' id='trending'>
+            <div className='flex items-center justify-between mb-[30px] px-10'>
+                <BtnCategory title={title} />
             </div>
             {
                 movies &&
@@ -81,7 +70,7 @@ export const Trending = () => {
                     >
                         {movies.map((movie, index) => (
                             <SwiperSlide key={index}   >
-                                <CategoryItem id={movie?.id} pathPoster={movie?.poster_path} voteAverage={movie?.vote_average} date={movie?.release_date} title={movie?.title} genreIds={movie?.genre_ids} />
+                                <CategoryItem pathPoster={movie?.poster_path} voteAverage={movie?.vote_average} date={movie?.release_date} title={movie?.title} genreIds={movie?.genre_ids} />
                             </SwiperSlide>
                         ))
                         }

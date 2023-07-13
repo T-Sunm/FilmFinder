@@ -29,7 +29,7 @@ export const HeroBanner = () => {
 
     return (
         // phải bọc 1 div bên ngoài để css tránh bị ảnh hưởng các carousel khác
-        <div className='carousel-1'>
+        <div className='carousel-1' id='home'>
             <Swiper
                 effect={'coverflow'}
                 centeredSlides={true}

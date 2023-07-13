@@ -33,7 +33,7 @@ export const Detailsbanner = ({ urlBackdrop, pathBackDrop, urlPoster, pathPoster
       after:w-full
       after:h-[100px]
       after:bg-gradient-to-t from-bg to-transparent' style={{ backgroundImage: `url(${urlBackdrop + pathBackDrop})` }}>
-            <div className='w-[20%] relative '>
+            <div className='w-[20%] relative min-w-[270px]'>
                 <img src={`${urlPoster + pathPoster}`} className='rounded-lg' />
             </div>
             <div className='w-[60%] relative'>
