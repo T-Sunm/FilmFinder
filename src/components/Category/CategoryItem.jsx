@@ -4,22 +4,22 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 
-export const CategoryItem = ({ pathPoster, voteAverage, date, title, genreIds, id }) => {
+export const CategoryItem = ({ pathPoster, voteAverage, date, title, genreIds, id, mediaType }) => {
     const { url, genres } = useSelector((state) => state.home)
     const postUrl = url.poster + pathPoster
 
     date = dayjs(date);
     let formattedDate = date.format('MMMM D, YYYY');
 
-    var originalNumber = voteAverage;
+    var originalNumber = voteAverage || 0;
     var roundedNumber = parseFloat(originalNumber.toFixed(1)) * 10
 
     // set animation cho số
     const props = useSpring({ voteAverage: roundedNumber, from: { voteAverage: 0 } })
 
-    const genresItems = genres?.genres?.filter(genre => genreIds.includes(genre.id)).slice(0, 2)
+    const genresItems = genres?.genres?.filter(genre => genreIds?.includes(genre.id)).slice(0, 2)
     return (
-        <Link to={`/FilmFinder/movie/${id}`} >
+        <Link to={`/FilmFinder/${mediaType}/${id}`} >
             <div className=' h-[400px] '>
                 <div className='relative'>
                     <img src={postUrl} alt="" className='rounded-md w-[220px]' />

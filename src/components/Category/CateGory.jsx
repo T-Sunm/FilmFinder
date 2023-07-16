@@ -70,7 +70,7 @@ export const CateGory = ({ type, title, id }) => {
                     >
                         {movies.map((movie, index) => (
                             <SwiperSlide key={index}   >
-                                <CategoryItem pathPoster={movie?.poster_path} voteAverage={movie?.vote_average} date={movie?.release_date} title={movie?.title} genreIds={movie?.genre_ids} />
+                                <CategoryItem type={type} pathPoster={movie?.poster_path} voteAverage={movie?.vote_average} date={movie?.release_date} title={movie?.title} genreIds={movie?.genre_ids} />
                             </SwiperSlide>
                         ))
                         }

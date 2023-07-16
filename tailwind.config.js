@@ -14,8 +14,10 @@ export default {
       },
       colors: {
         primary: '#ff0000',
-        bg: '#0f0f0f',
+        bg_black: '#0f0f0f',
+        bg_white: '#f0f0f0',
         overlay: 'rgba(0, 0, 0, 0.8)',
+        white_opacity_80: 'rgba(255, 255, 255, 0.2)'
       },
       gridTemplateColumns: {
         'fill': 'repeat(auto-fill, minmax(90px, 1fr))',

@@ -20,6 +20,7 @@ export const HeroBanner = () => {
     const [movies, setMovies] = useState([]);
     const { url } = useSelector((state => state.home))
     const { data } = useFetch('/movie/popular?language=en-US&page=1');
+    const { theme } = useSelector((state) => state.theme)
     useEffect(() => {
         if (data && data.results) {
             setMovies(data.results.slice(0, 6));
@@ -29,7 +30,7 @@ export const HeroBanner = () => {
 
     return (
         // phải bọc 1 div bên ngoài để css tránh bị ảnh hưởng các carousel khác
-        <div className='carousel-1' id='home'>
+        <div className={`carousel-1  ${theme === 'black' ? '' : 'active'} `} id='home'>
             <Swiper
                 effect={'coverflow'}
                 centeredSlides={true}

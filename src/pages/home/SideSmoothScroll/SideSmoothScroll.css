@@ -31,16 +31,6 @@
     translate: 0% 0%;
 }
 
-.codepen-button2::after {
-    /* content: "";
-    position: absolute;
-    top: 1;
-    left: 1;
-    background-color: black;
-    width: 90%;
-    height: 100%;
-    border-radius: 5px; */
-}
 
 @keyframes an2-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop {
     to {

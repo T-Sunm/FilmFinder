@@ -1,13 +1,22 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { CastList } from './CastList'
+import { useSpring, animated } from 'react-spring';
 
-export const Detailsbanner = ({ urlBackdrop, pathBackDrop, urlPoster, pathPoster, title, tagLine, Genres, overview, status, id, mediaType, runtime, release }) => {
+export const Detailsbanner = ({ urlBackdrop, pathBackDrop, urlPoster, pathPoster, title, tagLine, Genres, overview, status, id, mediaType, runtime, release, voteAverage = 0 }) => {
 
     const changeTimeHour = Math.floor(runtime / 60);
     const changeMinutes = runtime % 60;
 
     const Year = release?.split('-')[0]
+
+    var originalNumber = voteAverage;
+    var roundedNumber = parseFloat(originalNumber.toFixed(1)) * 10
+
+    // set animation cho số
+    const props = useSpring({ voteAverage: roundedNumber, from: { voteAverage: 0 } })
+
+
     return (
         <div className='relative
         flex
@@ -32,7 +41,7 @@ export const Detailsbanner = ({ urlBackdrop, pathBackDrop, urlPoster, pathPoster
       after:left-0
       after:w-full
       after:h-[100px]
-      after:bg-gradient-to-t from-bg to-transparent' style={{ backgroundImage: `url(${urlBackdrop + pathBackDrop})` }}>
+      after:bg-gradient-to-t from-bg_black to-transparent' style={{ backgroundImage: `url(${urlBackdrop + pathBackDrop})` }}>
             <div className='w-[20%] relative min-w-[270px]'>
                 <img src={`${urlPoster + pathPoster}`} className='rounded-lg' />
             </div>
@@ -43,7 +52,10 @@ export const Detailsbanner = ({ urlBackdrop, pathBackDrop, urlPoster, pathPoster
                 <p className='italic my-2'>{tagLine}</p>
                 <div className='flex items-center'>
                     <div className='my-3 flex gap-5 items-center'>
-                        <div className="radial-progress bg-transparent text-primary-content border-1" style={{ "--value": 70, "--size": "4rem", "--thickness": "2px" }}>70%</div>
+                        <animated.div className="radial-progress bg-transparent text-primary-content border-1 flex justify-center items-center"
+                            style={{ "--value": props.voteAverage.to((val) => Math.floor(val)), "--size": "4rem", "--thickness": "2px" }}>
+                            <animated.span>{props.voteAverage.to((val) => Math.floor(val))}</animated.span> %
+                        </animated.div>
                         <div className='h-[50%] flex gap-3 border-l-4 pl-4'>
                             {Genres &&
                                 Genres.map((item, key) => (
@@ -55,7 +67,11 @@ export const Detailsbanner = ({ urlBackdrop, pathBackDrop, urlPoster, pathPoster
                         </div>
                     </div>
                 </div>
-                <span className='text-sm font-semibold'>{changeTimeHour + ' hr ' + changeMinutes + ' m '}</span>
+                {
+                    runtime ? <span className='text-sm font-semibold'>{changeTimeHour + ' hr ' + changeMinutes + ' m '}</span>
+                        :
+                        <span className='text-sm font-semibold'>Run time : not update</span>
+                }
                 <div>
                     <h1 className='text-xl font-medium'>
                         Overview

@@ -12,6 +12,12 @@
     isolation: isolate;
 }
 
+.codepen-button {
+
+    color: black;
+
+}
+
 .codepen-button::before {
     content: "";
     position: absolute;
@@ -44,4 +50,16 @@
     background: black;
     border-radius: 3px;
     height: 100%;
+    color: white;
+}
+
+.codepen-button.active span {
+    position: relative;
+    display: block;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    background: white;
+    border-radius: 3px;
+    height: 100%;
+    color: black;
 }

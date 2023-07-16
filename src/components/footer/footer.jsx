@@ -8,7 +8,7 @@ import { BiCopyright } from 'react-icons/bi';
 export default function Footer() {
     const renderColumn = (column) => {
         return (
-            <div className='column'>
+            <div className='column' key={column}>
                 <ul>
                     {optionFooter[column].map((item, index) => (
                         <li
