@@ -3,7 +3,7 @@ import './Header.scss'
 import Logo from '../../assets/movix-logo.png'
 import { SwapDarkMode } from './SwapDarkMode';
 import { ButtonSearch } from './ButtonSearch';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Header = () => {
     const numbers = [1, 2, 3, 4];
@@ -59,9 +59,8 @@ export const Header = () => {
                     </label>
                     <div className={`container-menu `} style={{ maxHeight: getHeight() }} >
                         <ul className={`menu menu-sm mt-3 z-[1] p-2 shadow ${trans} rounded-box w-52 `}>
-                            <li><a>Homepage</a></li>
-                            <li><a>Portfolio</a></li>
-                            <li><a>About</a></li>
+                            <li><Link to={"/FilmFinder/movie"}>Movies</Link></li>
+                            <li><Link to={"/FilmFinder/tv"}>TvShows</Link></li>
                             <li className=''><a>DarkMode <SwapDarkMode /></a> </li>
                         </ul>
                     </div>

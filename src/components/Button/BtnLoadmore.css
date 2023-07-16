@@ -1,4 +1,4 @@
-button {
+.Loadmore {
     display: inline-block;
     width: 150px;
     height: 50px;
@@ -10,8 +10,8 @@ button {
     z-index: 1;
 }
 
-button::before,
-button::after {
+.Loadmore::before,
+.Loadmore::after {
     content: '';
     position: absolute;
     top: 0;
@@ -23,27 +23,27 @@ button::after {
     z-index: -1;
 }
 
-button::before {
+.Loadmore::before {
     left: -10px;
     background: #240046;
 }
 
-button::after {
+.Loadmore::after {
     right: -10px;
     background: #5a189a;
 }
 
-button:hover::before,
-button:hover::after {
+.Loadmore:hover::before,
+.Loadmore:hover::after {
     width: 58%;
 }
 
-button:hover span {
+.Loadmore:hover span {
     color: #e0aaff;
     transition: 0.3s;
 }
 
-button span {
+.Loadmore span {
     color: #03045e;
     font-size: 18px;
     transition: all 0.3s ease-in;

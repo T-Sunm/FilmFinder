@@ -7,9 +7,9 @@ import { createBrowserRouter, RouterProvider, ScrollRestoration } from 'react-ro
 
 import { Home } from './pages/home/Home';
 import { RootLayout } from './pages/RootLayout';
-import { MoviePage } from './pages/MoviesPage/MoviePage';
 import { Details } from './pages/details/Details';
 import { SearchResult } from './pages/searchResult/SearchResult';
+import { Explore } from './pages/MoviesPage/Explore';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <MoviePage />
+            element: <Explore />
           },
           {
             path: '/FilmFinder/:mediaType/:id',
