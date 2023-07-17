@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import useFetch from '../../Hooks/useFetch';
 import { useSelector } from 'react-redux';
@@ -14,7 +14,9 @@ export const Details = () => {
     const { data, loading } = useFetch(`/${mediaType}/${id}?language=en-US`)
 
     const { url } = useSelector((state) => state.home)
-    console.log(data)
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [data])
     return (
         <div className='w-full h-[100px]'>
             {data &&

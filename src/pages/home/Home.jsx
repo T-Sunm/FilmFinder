@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { HeroBanner } from '../../components/HeroBanner/HeroBanner'
 import { Trending } from './Trending/Trending'
 
@@ -8,6 +8,9 @@ import { SideSmoothScroll } from './SideSmoothScroll/SideSmoothScroll'
 
 
 export const Home = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className='h-[100px]' >
             <HeroBanner />

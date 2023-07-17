@@ -52,7 +52,7 @@ export const Detailsbanner = ({ urlBackdrop, pathBackDrop, urlPoster, pathPoster
                 <p className='italic my-2'>{tagLine}</p>
                 <div className='flex items-center'>
                     <div className='my-3 flex gap-5 items-center'>
-                        <animated.div className="radial-progress bg-transparent text-primary-content border-1 flex justify-center items-center"
+                        <animated.div className={`radial-progress bg-transparent ${voteAverage >= 7 ? 'text-success' : voteAverage < 7 && voteAverage > 5 ? "text-warning" : 'text-error'} border-1 flex justify-center items-center`}
                             style={{ "--value": props.voteAverage.to((val) => Math.floor(val)), "--size": "4rem", "--thickness": "2px" }}>
                             <animated.span>{props.voteAverage.to((val) => Math.floor(val))}</animated.span> %
                         </animated.div>

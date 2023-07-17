@@ -57,13 +57,14 @@ export const Header = () => {
                     <label className="btn btn-ghost btn-circle" onClick={() => setToggleMenu(!toggleMenu)}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>
-                    <div className={`container-menu `} style={{ maxHeight: getHeight() }} >
-                        <ul className={`menu menu-sm mt-3 z-[1] p-2 shadow ${trans} rounded-box w-52 `}>
+                    <div className={`container-menu`} style={{ maxHeight: getHeight() }} >
+                        <ul className={`menu menu-sm mt-3 z-[1] p-2 shadow  rounded-box w-52 `}>
                             <li><Link to={"/FilmFinder/movie"}>Movies</Link></li>
                             <li><Link to={"/FilmFinder/tv"}>TvShows</Link></li>
                             <li className=''><a>DarkMode <SwapDarkMode /></a> </li>
                         </ul>
                     </div>
+                    <div class={`circle ${toggleMenu ? '' : 'inActive'}`}></div>
                 </div>
             </div>
         </div>

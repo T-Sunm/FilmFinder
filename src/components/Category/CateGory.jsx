@@ -66,7 +66,9 @@ export const CateGory = ({ type, title, id }) => {
                     <Swiper breakpoints={breakpoints}>
                         {Array(6).fill(0).map((item, i) => (
                             <SwiperSlide key={i}>
-                                <CateGoryItemLoading />
+                                <div className='w-[220px] h-[300px]'>
+                                    <CateGoryItemLoading />
+                                </div>
                             </SwiperSlide>
                         ))}
 

@@ -86,7 +86,11 @@ export const DetailtsBannerLoading = () => {
                     <h1 className='font-semibold mb-2'>Cast</h1>
                     <div className='flex gap-3'>
                         {Array(6).fill(0).map((item, i) => (
-                            <CateGoryItemLoading />
+
+                            <div className='w-[220px] h-[230px]'>
+                                <CateGoryItemLoading />
+                            </div>
+
                         ))}
                     </div>
 

@@ -5,13 +5,14 @@ import { CategoryItem } from '../../components/Category/CategoryItem'
 import { BtnLoadmore } from '../../components/Button/BtnLoadmore'
 import noPoster from '../../assets/no-poster.png'
 import Footer from '../../components/footer/Footer'
+import { Loader } from '../../components/Loading/Loader'
 export const SearchResult = () => {
 
     const [results, setResults] = useState([])
     const [pageNum, setPageNum] = useState(1)
     const { query } = useParams();
 
-    const { data, Loading } = useFetch(`/search/multi?query=${query}&page=${pageNum}`)
+    const { data, loading } = useFetch(`/search/multi?query=${query}&page=${pageNum}`)
 
     useEffect(() => {
         if (data?.results) {
@@ -31,8 +32,7 @@ export const SearchResult = () => {
                     <div className='flex flex-col items-center justify-center '>
 
                         <div className="text-white grid grid-cols-6">
-                            {
-                                data &&
+                            {!loading && data &&
                                 results.map((movie, key) => (
                                     movie.poster_path ?
                                         <CategoryItem key={key} pathPoster={movie?.poster_path} voteAverage={movie?.vote_average} date={movie?.release_date} title={movie?.title} genreIds={movie?.genre_ids} />
@@ -41,6 +41,9 @@ export const SearchResult = () => {
 
                             }
                         </div>
+                        {loading && !data &&
+                            <Loader />
+                        }
                         <BtnLoadmore onNext={nextPage} />
                     </div>
                 </div>
