@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { SwiperSlide, Swiper } from 'swiper/react';
 import useFetch from '../../Hooks/useFetch';
 import { useSelector } from 'react-redux';
+import { CateGoryItemLoading } from '../Category/CateGoryItemLoading';
 
 export const CastList = ({ id, mediaType }) => {
     const [casts, setCasts] = useState([]);
@@ -54,24 +55,21 @@ export const CastList = ({ id, mediaType }) => {
     return (
 
         <div className=''>
-            {
-                casts &&
-                <div className=''>
-                    <Swiper
-                        breakpoints={breakpoints}
-                    >
-                        {casts.map((cast, index) => (
-                            <SwiperSlide key={index}   >
-                                <div className='flex flex-col gap-2'>
-                                    <img src={`${url.profile + cast.profile_path}`} className='rounded-lg' />
-                                    {cast.name}
-                                    <p className='text-xs'>{cast.character}</p>
-                                </div>
-                            </SwiperSlide>
-                        ))
-                        }
-                    </Swiper>
-                </div>
+            {casts &&
+                <Swiper
+                    breakpoints={breakpoints}
+                >
+                    {casts.map((cast, index) => (
+                        <SwiperSlide key={index}   >
+                            <div className='flex flex-col gap-2'>
+                                <img src={`${url.profile + cast.profile_path}`} className='rounded-lg' />
+                                {cast.name}
+                                <p className='text-xs'>{cast.character}</p>
+                            </div>
+                        </SwiperSlide>
+                    ))
+                    }
+                </Swiper>
             }
 
         </div>

@@ -24,8 +24,8 @@ export const CategoryItem = ({ pathPoster, voteAverage, date, title, genreIds, i
                 <div className='relative'>
                     <img src={postUrl} alt="" className='rounded-md w-[220px]' />
                     <animated.div
-                        className="radial-progress absolute bottom-[-16px] text-success flex justify-center items-center"
-                        style={{ "--value": props.voteAverage.to((val) => Math.floor(val)), "--size": "3rem" }}>
+                        className={`radial-progress backdrop-blur-sm absolute bottom-[-16px] ${voteAverage >= 7 ? 'text-success' : voteAverage < 7 && voteAverage > 5 ? "text-warning" : 'text-error'} flex justify-center items-center`}
+                        style={{ "--value": props.voteAverage.to((val) => Math.floor(val)), "--size": "3rem", "--thickness": "3px" }}>
                         <animated.span>{props.voteAverage.to((val) => Math.floor(val))}</animated.span> %
                     </animated.div>
                     <div className='absolute bottom-1 right-3 w-[75%] flex flex-wrap justify-end gap-2'>

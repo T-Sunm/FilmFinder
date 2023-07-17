@@ -8,16 +8,15 @@ import 'swiper/css';
 
 import { BtnCategory } from '../../../components/Button/BtnCategory';
 import { CategoryItem } from '../../../components/Category/CategoryItem';
+import { CateGoryItemLoading } from '../../../components/Category/CateGoryItemLoading';
 export const Category = ({ type, title }) => {
 
     const [endpoint, setEndPoint] = useState("movie")
     const [movies, setMovies] = useState([])
     const { data, loading } = useFetch(`/${endpoint}/${type}?language=en-US&page=1`)
-    console.log(data)
     useEffect(() => {
         if (data) {
             setMovies(data.results)
-            console.log(movies?.title)
         }
     }, [data])
     const onTabChange = (tab) => {
@@ -70,10 +69,8 @@ export const Category = ({ type, title }) => {
                 <BtnCategory title={title} />
                 <SwitchTabs data={["Movies", "TVshows"]} onTabChange={onTabChange} />
             </div>
-            {
-                movies &&
-
-                <div className='px-20'>
+            <div className='px-20'>
+                {!loading && movies &&
                     <Swiper
                         breakpoints={breakpoints}
                     >
@@ -84,8 +81,19 @@ export const Category = ({ type, title }) => {
                         ))
                         }
                     </Swiper>
-                </div>
-            }
+                }
+                {loading && !movies &&
+                    <Swiper breakpoints={breakpoints}>
+                        {Array(6).fill(0).map((item, i) => (
+                            <SwiperSlide key={i}>
+                                <CateGoryItemLoading />
+                            </SwiperSlide>
+                        ))}
+
+                    </Swiper>
+
+                }
+            </div>
 
         </div>
     )

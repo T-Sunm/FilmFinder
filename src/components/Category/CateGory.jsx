@@ -3,6 +3,7 @@ import useFetch from '../../Hooks/useFetch'
 import { BtnCategory } from '../Button/BtnCategory'
 import { SwiperSlide, Swiper } from 'swiper/react'
 import { CategoryItem } from './CategoryItem'
+import { CateGoryItemLoading } from './CateGoryItemLoading'
 
 export const CateGory = ({ type, title, id }) => {
 
@@ -12,7 +13,6 @@ export const CateGory = ({ type, title, id }) => {
     useEffect(() => {
         if (data) {
             setMovies(data.results)
-            console.log(movies?.title)
         }
     }, [data])
     const breakpoints = {
@@ -61,22 +61,28 @@ export const CateGory = ({ type, title, id }) => {
             <div className='flex items-center justify-between mb-[30px] px-10'>
                 <BtnCategory title={title} />
             </div>
-            {
-                movies &&
+            <div className='px-20'>
+                {loading && !movies && (
+                    <Swiper breakpoints={breakpoints}>
+                        {Array(6).fill(0).map((item, i) => (
+                            <SwiperSlide key={i}>
+                                <CateGoryItemLoading />
+                            </SwiperSlide>
+                        ))}
 
-                <div className='px-20'>
-                    <Swiper
-                        breakpoints={breakpoints}
-                    >
+                    </Swiper>
+                )}
+                {!loading && movies &&
+                    <Swiper breakpoints={breakpoints}>
                         {movies.map((movie, index) => (
-                            <SwiperSlide key={index}   >
+                            <SwiperSlide key={index}>
                                 <CategoryItem type={type} pathPoster={movie?.poster_path} voteAverage={movie?.vote_average} date={movie?.release_date} title={movie?.title} genreIds={movie?.genre_ids} />
                             </SwiperSlide>
-                        ))
-                        }
+                        ))}
+
                     </Swiper>
-                </div>
-            }
+                }
+            </div>
 
         </div>
     )

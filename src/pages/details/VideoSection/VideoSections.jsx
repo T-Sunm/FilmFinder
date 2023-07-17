@@ -7,6 +7,7 @@ import VideoPopup from "../VideoPopup/VideoPopup";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useFetch from "../../../Hooks/useFetch";
 import { BtnCategory } from "../../../components/Button/BtnCategory";
+import LoadingSkeleton from "../../../components/Loading/LoadingSkeleton";
 
 const VideosSection = ({ id, mediaType, loading }) => {
     const [show, setShow] = useState(false);
@@ -53,12 +54,22 @@ const VideosSection = ({ id, mediaType, loading }) => {
                         </Swiper>
                     </div>
                 ) : (
-                    <div className="videoSkeleton">
-                        {loadingSkeleton()}
-                        {loadingSkeleton()}
-                        {loadingSkeleton()}
-                        {loadingSkeleton()}
-                    </div>
+                    <Swiper
+                        spaceBetween={50}
+                        slidesPerView={5}
+                        onSlideChange={() => console.log('slide change')}
+                        onSwiper={(swiper) => console.log(swiper)}
+                    >
+                        {Array(6).fill(0).map((item, i) => (
+                            <SwiperSlide>
+                                <div key={i} className="videoThumbnail mt-5 ">
+                                    <LoadingSkeleton className="w-[100%] h-[100px] rounded-lg" />
+                                    <PlayIcon />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+
                 )}
             </div>
             <VideoPopup

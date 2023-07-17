@@ -8,6 +8,7 @@ import 'swiper/css';
 
 import { CategoryItem } from '../../../components/Category/CategoryItem';
 import { BtnCategory } from '../../../components/Button/BtnCategory';
+import { CateGoryItemLoading } from '../../../components/Category/CateGoryItemLoading';
 export const Trending = () => {
 
     const [endpoint, setEndPoint] = useState("day")
@@ -72,9 +73,8 @@ export const Trending = () => {
                 <BtnCategory title={"Trending"} />
                 <SwitchTabs data={["Day", "Week"]} onTabChange={onTabChange} />
             </div>
-            {
-                movies &&
 
+            {!loading && movies &&
                 <div className='px-20'>
                     <Swiper
                         breakpoints={breakpoints}
@@ -87,6 +87,18 @@ export const Trending = () => {
                         }
                     </Swiper>
                 </div>
+            }
+            {loading && !movies &&
+                <Swiper breakpoints={breakpoints}>
+                    {Array(6).fill(0).map((item, i) => (
+                        <SwiperSlide key={i}>
+                            <CateGoryItemLoading />
+
+                        </SwiperSlide>
+                    ))}
+
+                </Swiper>
+
             }
 
         </div>

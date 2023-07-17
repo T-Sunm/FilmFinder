@@ -7,6 +7,7 @@ import { Trailer } from './Trailer';
 import Footer from '../../components/footer/Footer';
 import { CateGory } from '../../components/Category/CateGory';
 import VideosSection from './VideoSection/VideoSections';
+import { DetailtsBannerLoading } from '../../components/Details/DetailtsBannerLoading';
 
 export const Details = () => {
     const { mediaType, id } = useParams();
@@ -33,6 +34,10 @@ export const Details = () => {
                     release={data?.release_date || data?.first_air_date}
                     voteAverage={data?.vote_average}
                 />
+
+            }
+            {!data &&
+                <DetailtsBannerLoading />
             }
             <VideosSection id={id} mediaType={mediaType} loading={loading} />
             <CateGory type={mediaType} title={"More like this"} id={id} />
