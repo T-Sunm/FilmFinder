@@ -1,0 +1,90 @@
+.AttentionPopup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9;
+
+    .opacityLayer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+
+    .attentionPlayer {
+        position: relative;
+        width: 600px;
+        height: 600px;
+        background-color: white;
+        transform: scale(0.2);
+        transition: transform 250ms;
+        background: rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(3.5px);
+        -webkit-backdrop-filter: blur(3.5px);
+        border-radius: 20px;
+
+        .closeBtn {
+            position: absolute;
+            top: -20px;
+            right: 0;
+            color: white;
+            cursor: pointer;
+        }
+    }
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+
+        .opacityLayer {
+            opacity: 1;
+        }
+
+        .attentionPlayer {
+            transform: scale(1);
+        }
+    }
+}
+
+.Party {
+    position: relative;
+    width: 50%;
+    height: 50%;
+
+    &:after {
+        content: "";
+        position: absolute;
+        background: white; // Đảm bảo rằng bạn đã khai báo biến SCSS $primary
+        height: 0%;
+        width: 0px;
+        top: -25px;
+        left: 50%;
+        z-index: 10;
+        rotate: -45deg;
+        border-radius: 20px;
+        animation: pulse 1s infinite;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0;
+        width: 0px;
+        height: 100%;
+    }
+
+    100% {
+        opacity: 1;
+        width: 5px;
+        height: 120%;
+    }
+}

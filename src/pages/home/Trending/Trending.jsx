@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { SwitchTabs } from '../../../components/SwitchTab/SwitchTabs'
+import { motion } from 'framer-motion';
 
 
 import useFetch from '../../../Hooks/useFetch'
@@ -66,6 +67,14 @@ export const Trending = () => {
             spaceBetween: 6,
         },
     };
+    const cardVariants = {
+        offscreen: {
+            opacity: 0
+        },
+        onscreen: {
+            opacity: 1,
+        }
+    };
     return (
         <div className='px-4' id='trending'>
             <div className='flex items-center justify-between mt-5 mb-[30px] relative px-10'>
@@ -81,8 +90,19 @@ export const Trending = () => {
                     >
                         {movies.map((movie, index) => (
                             <SwiperSlide key={index}   >
-                                <CategoryItem mediaType={"movie"} id={movie?.id} pathPoster={movie?.poster_path} voteAverage={movie?.vote_average} date={movie?.release_date} title={movie?.title} genreIds={movie?.genre_ids} />
+                                <motion.div
+                                    variants={cardVariants}
+                                    initial="offscreen"
+                                    whileInView="onscreen"
+                                    viewport={{ amount: 0.1 }}
+                                    transition={{ delay: 0.1, duration: 0.5 }}
+                                >
+
+                                    <CategoryItem mediaType={"movie"} id={movie?.id} pathPoster={movie?.poster_path} voteAverage={movie?.vote_average} date={movie?.release_date} title={movie?.title} genreIds={movie?.genre_ids} />
+
+                                </motion.div>
                             </SwiperSlide>
+
                         ))
                         }
                     </Swiper>

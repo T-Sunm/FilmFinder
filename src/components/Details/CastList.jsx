@@ -3,6 +3,7 @@ import { SwiperSlide, Swiper } from 'swiper/react';
 import useFetch from '../../Hooks/useFetch';
 import { useSelector } from 'react-redux';
 import { CateGoryItemLoading } from '../Category/CateGoryItemLoading';
+import { motion } from 'framer-motion';
 
 export const CastList = ({ id, mediaType }) => {
     const [casts, setCasts] = useState([]);
@@ -52,6 +53,14 @@ export const CastList = ({ id, mediaType }) => {
             spaceBetween: 6,
         },
     };
+    const cardVariants = {
+        offscreen: {
+            opacity: 0
+        },
+        onscreen: {
+            opacity: 1,
+        }
+    };
     return (
 
         <div className=''>
@@ -61,11 +70,17 @@ export const CastList = ({ id, mediaType }) => {
                 >
                     {casts.map((cast, index) => (
                         <SwiperSlide key={index}   >
-                            <div className='flex flex-col gap-2'>
+                            <motion.div
+                                variants={cardVariants}
+                                initial="offscreen"
+                                whileInView="onscreen"
+                                viewport={{ amount: 0.1 }}
+                                transition={{ delay: 0.1, duration: 0.5 }}
+                                className='flex flex-col gap-2'>
                                 <img src={`${url.profile + cast.profile_path}`} className='rounded-lg' />
                                 {cast.name}
                                 <p className='text-xs'>{cast.character}</p>
-                            </div>
+                            </motion.div>
                         </SwiperSlide>
                     ))
                     }
