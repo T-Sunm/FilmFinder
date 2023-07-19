@@ -54,37 +54,3 @@
         }
     }
 }
-
-.Party {
-    position: relative;
-    width: 50%;
-    height: 50%;
-
-    &:after {
-        content: "";
-        position: absolute;
-        background: white; // Đảm bảo rằng bạn đã khai báo biến SCSS $primary
-        height: 0%;
-        width: 0px;
-        top: -25px;
-        left: 50%;
-        z-index: 10;
-        rotate: -45deg;
-        border-radius: 20px;
-        animation: pulse 1s infinite;
-    }
-}
-
-@keyframes pulse {
-    0% {
-        opacity: 0;
-        width: 0px;
-        height: 100%;
-    }
-
-    100% {
-        opacity: 1;
-        width: 5px;
-        height: 120%;
-    }
-}

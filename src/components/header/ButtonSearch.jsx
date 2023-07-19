@@ -40,16 +40,17 @@ export const ButtonSearch = () => {
         return null
     }
 
-    const handleListen = () => {
-        if (!listen) {
-            setShow(true)
-            setListen(!listen);
-        } else {
-            setListen(false);
-            SpeechRecognition.stopListening();
-        }
+    const handleMuted = () => {
+        setListen(false);
+        SpeechRecognition.stopListening();
     }
-
+    const handlePopup = () => {
+        setShow(true)
+    }
+    const handleUnderStand = () => {
+        setShow(false);
+        setListen(true)
+    }
     return (
         <>
             <div className={`${toggleSearch ? "w-[300px]" : 'w-[40px]'} relative h-[40px] rounded-[40px] overflow-hidden  border `} style={{ transition: 'width 0.5s' }}>
@@ -70,17 +71,20 @@ export const ButtonSearch = () => {
                 </div>
                 <div
                     className={`absolute right-0 -top-1 ${toggleSearch ? "block" : 'hidden'} cursor-pointer`}
-                    onClick={handleListen}
+
                 >
                     {listen ?
-                        <button className='absolute right-3 top-2' ><AiOutlineAudioMuted size={30} /></button>
+                        <button className='absolute right-3 top-2' onClick={handleMuted} ><AiOutlineAudioMuted size={30} /></button>
                         :
-                        <lord-icon
-                            src="https://cdn.lordicon.com/fpipqhrr.json"
-                            trigger="hover"
-                            colors="primary:#121331,secondary:#e8308c"
-                            style={{ width: "50px", height: "50px" }}>
-                        </lord-icon>
+                        <div onClick={handlePopup}>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/fpipqhrr.json"
+                                trigger="hover"
+                                colors="primary:#121331,secondary:#e8308c"
+                                style={{ width: "50px", height: "50px" }}>
+
+                            </lord-icon>
+                        </div>
                     }
 
                 </div>
@@ -88,6 +92,8 @@ export const ButtonSearch = () => {
             <AttentionPopup
                 show={show}
                 setShow={setShow}
+                setListen={setListen}
+                handleUnderStand={handleUnderStand}
             />
         </>
     )
