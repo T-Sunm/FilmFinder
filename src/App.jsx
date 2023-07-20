@@ -9,7 +9,7 @@ import { Home } from './pages/home/Home';
 import { RootLayout } from './pages/RootLayout';
 import { Details } from './pages/details/Details';
 import { SearchResult } from './pages/searchResult/SearchResult';
-import { Explore } from './pages/Explore/Explore';
+import { Explore } from './pages/Explores/Explore';
 const router = createBrowserRouter([
   {
     path: '/',

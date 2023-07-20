@@ -45,22 +45,22 @@ export const Explore = () => {
             }, 700)
         });
     };
-    const fetchNextPageData = () => {
-        fetchDatafromApi(
-            `/discover/${mediaType}?page=${pageNum}`,
-            filters
-        ).then((res) => {
-            if (data?.results) {
-                setData({
-                    ...data,
-                    results: [...data?.results, ...res.results],
-                });
-            } else {
-                setData(res);
-            }
-            setPageNum((prev) => prev + 1);
-        });
-    };
+    // const fetchNextPageData = () => {
+    //     fetchDatafromApi(
+    //         `/discover/${mediaType}?page=${pageNum}`,
+    //         filters
+    //     ).then((res) => {
+    //         if (data?.results) {
+    //             setData({
+    //                 ...data,
+    //                 results: [...data?.results, ...res.results],
+    //             });
+    //         } else {
+    //             setData(res);
+    //         }
+    //         setPageNum((prev) => prev + 1);
+    //     });
+    // };
 
     useEffect(() => {
         filters = {};
