@@ -4,7 +4,7 @@ import useFetch from '../../Hooks/useFetch';
 import { useSelector } from 'react-redux';
 import { CateGoryItemLoading } from '../Category/CateGoryItemLoading';
 import { motion } from 'framer-motion';
-import { Autoplay, Virtual, Pagination, Navigation } from 'swiper';
+import { Autoplay, Virtual, Scrollbar } from 'swiper';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -72,7 +72,8 @@ export const CastList = ({ id, mediaType }) => {
             {casts &&
                 <Swiper
                     breakpoints={breakpoints}
-                    modules={[Autoplay, Pagination, Virtual, Navigation]}
+                    modules={[Autoplay, Virtual, Scrollbar]}
+                    scrollbar={{ draggable: true }}
                     grabCursor={true}
                     autoplay={{ delay: 2000, disableOnInteraction: false, pauseOnMouseEnter: true }}
                     loop={true}

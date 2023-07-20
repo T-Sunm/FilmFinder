@@ -4,7 +4,11 @@ import { motion } from 'framer-motion';
 
 import useFetch from '../../../Hooks/useFetch'
 import { SwiperSlide, Swiper } from 'swiper/react'
+import { Autoplay, Virtual, Scrollbar } from 'swiper';
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 import { BtnCategory } from '../../../components/Button/BtnCategory';
 import { CategoryItem } from '../../../components/Category/CategoryItem';
@@ -82,6 +86,12 @@ export const Category = ({ type, title }) => {
                 {!loading && movies &&
                     <Swiper
                         breakpoints={breakpoints}
+                        modules={[Autoplay, Virtual, Scrollbar]}
+                        scrollbar={{ draggable: true }}
+                        grabCursor={true}
+                        autoplay={{ delay: 2000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+                        loop={true}
+                        virtual
                     >
                         {movies.map((movie, index) => (
                             <SwiperSlide key={index}   >

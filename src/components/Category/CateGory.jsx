@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import useFetch from '../../Hooks/useFetch'
 import { BtnCategory } from '../Button/BtnCategory'
-import { SwiperSlide, Swiper } from 'swiper/react'
 import { CategoryItem } from './CategoryItem'
 import { CateGoryItemLoading } from './CateGoryItemLoading'
+
+
+import { SwiperSlide, Swiper } from 'swiper/react'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 export const CateGory = ({ type, title, id }) => {
 
@@ -62,7 +69,11 @@ export const CateGory = ({ type, title, id }) => {
             </div>
             <div className='px-20'>
                 {loading && !movies && (
-                    <Swiper breakpoints={breakpoints}>
+                    <Swiper breakpoints={breakpoints}
+                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        navigation
+                        pagination={{ clickable: true }}
+                        scrollbar={{ draggable: true }}>
                         {Array(6).fill(0).map((item, i) => (
                             <SwiperSlide key={i}>
                                 <div className=' h-[300px]'>
