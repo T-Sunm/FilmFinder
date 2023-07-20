@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 import useFetch from '../../Hooks/useFetch';
 import { useSelector } from 'react-redux';
 import { Detailsbanner } from '../../components/Details/Detailsbanner';
-import { Footer } from '../../components/Footer/Footer';
 import { CateGory } from '../../components/Category/CateGory';
 import VideosSection from './VideoSection/VideoSections';
 import { DetailtsBannerLoading } from '../../components/Details/DetailtsBannerLoading';
@@ -42,7 +41,6 @@ export const Details = () => {
             }
             <VideosSection id={id} mediaType={mediaType} loading={loading} />
             <CateGory type={mediaType} title={"More like this"} id={id} />
-            <Footer />
         </div>
     )
 }
