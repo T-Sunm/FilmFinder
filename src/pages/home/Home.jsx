@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { HeroBanner } from '../../components/HeroBanner/HeroBanner'
 import { Trending } from './Trending/Trending'
 
-import Footer2 from '../../components/footer/Footer2'
+import Footer2 from '../../components/Footer/Footer2'
 import { Category } from './Category/Category'
 import { SideSmoothScroll } from './SideSmoothScroll/SideSmoothScroll'
 

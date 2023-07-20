@@ -3,8 +3,7 @@ import { useParams } from 'react-router-dom'
 import useFetch from '../../Hooks/useFetch';
 import { useSelector } from 'react-redux';
 import { Detailsbanner } from '../../components/Details/Detailsbanner';
-import { Trailer } from './Trailer';
-import Footer from '../../components/footer/Footer';
+import Footer from '../../components/Footer/Footer';
 import { CateGory } from '../../components/Category/CateGory';
 import VideosSection from './VideoSection/VideoSections';
 import { DetailtsBannerLoading } from '../../components/Details/DetailtsBannerLoading';
