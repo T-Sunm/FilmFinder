@@ -5,7 +5,7 @@ import { AiFillCheckCircle } from 'react-icons/ai'
 import { AiFillWindows, AiFillApple, AiFillChrome, AiFillAndroid } from 'react-icons/ai'
 import { FaLinux } from 'react-icons/fa'
 import './Footer2.css'
-export default function Footer2() {
+const Footer2 = () => {
     return (
         <>
             <div
@@ -78,3 +78,4 @@ export default function Footer2() {
 
     )
 }
+export default Footer2;
