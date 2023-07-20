@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { optionFooter } from './utils';
 import { AiFillWindows, AiFillApple } from 'react-icons/ai';
 import { BiCopyright } from 'react-icons/bi';
-export default function Footer() {
+export const Footer = () => {
     const renderColumn = (column) => {
         return (
             <div className='column' key={column}>
