@@ -7,7 +7,7 @@ export const DetailtsBannerLoading = () => {
     const breakpoints = {
         // Hiển thị 3 slide trên viewport nhỏ hơn 640px
         320: {
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 5,
         },
         480: {
@@ -19,20 +19,20 @@ export const DetailtsBannerLoading = () => {
             spaceBetween: 5,
         },
         680: {
-            slidesPerView: 4,
+            slidesPerView: 3,
             spaceBetween: 5,
         },
         // Hiển thị 4 slide trên viewport từ 768px đến 1024px
         768: {
-            slidesPerView: 4,
+            slidesPerView: 3,
             spaceBetween: 5,
         },
         868: {
-            slidesPerView: 4,
+            slidesPerView: 5,
             spaceBetween: 5,
         },
         968: {
-            slidesPerView: 4,
+            slidesPerView: 5,
             spaceBetween: 5,
         },
         // Hiển thị 6 slide trên viewport lớn hơn 1024px
@@ -54,7 +54,7 @@ export const DetailtsBannerLoading = () => {
         w-full
         h-[90vh]
       '>
-            <div className='w-[20%] relative min-w-[270px]'>
+            <div className='w-[20%] relative min-w-[270px] mobile:hidden'>
                 <LoadingSkeleton className='w-full h-[500px] rounded-lg' />
             </div>
             <div className='w-[60%] relative'>
@@ -85,13 +85,17 @@ export const DetailtsBannerLoading = () => {
                 <div className='flex flex-col'>
                     <h1 className='font-semibold mb-2'>Cast</h1>
                     <div className='flex gap-3'>
-                        {Array(6).fill(0).map((item, i) => (
-
-                            <div className='w-[220px] h-[230px]'>
-                                <CateGoryItemLoading />
-                            </div>
-
-                        ))}
+                        <Swiper
+                            breakpoints={breakpoints}
+                        >
+                            {Array(6).fill(0).map((cast, index) => (
+                                <SwiperSlide key={index}   >
+                                    <div className='h-[230px]'>
+                                        <CateGoryItemLoading />
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
 
                 </div>

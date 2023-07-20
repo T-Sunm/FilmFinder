@@ -105,6 +105,7 @@
     .carousel-1 .slider-controler .swiper-button-prev {
         left: 30% !important;
         transform: translateX(-30%) !important;
+
     }
 }
 
@@ -130,6 +131,14 @@
     color: #d2d2d4;
 }
 
+@media (max-width: 990px) {
+    .carousel-1 .slider-controler .slider-arrow {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+/* content = 0 để vứt cái arrow mặc định của carousel */
 .carousel-1 .slider-controler .slider-arrow::after {
     content: '';
 }

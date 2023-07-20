@@ -74,7 +74,7 @@ export const Category = ({ type, title }) => {
 
     return (
         <div className='px-4 ' id={type}>
-            <div className='flex items-center justify-between mb-[30px] px-10'>
+            <div className='flex items-center justify-between mb-[30px] px-10 mobile:px-0'>
                 <BtnCategory title={title} />
                 <SwitchTabs data={["Movies", "TVshows"]} onTabChange={onTabChange} />
             </div>
@@ -103,7 +103,7 @@ export const Category = ({ type, title }) => {
                     <Swiper breakpoints={breakpoints}>
                         {Array(6).fill(0).map((item, i) => (
                             <SwiperSlide key={i}>
-                                <div className='w-[220px] h-[300px]'>
+                                <div className=' h-[300px]'>
                                     <CateGoryItemLoading />
                                 </div>
                             </SwiperSlide>

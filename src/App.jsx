@@ -64,7 +64,6 @@ function App() {
   const fetchApiGenres = () => {
     fetchDatafromApi("/genre/movie/list?language=en")
       .then((res) => {
-        console.log(res)
         dispatch(getGenres(res))
       });
   }

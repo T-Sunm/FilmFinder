@@ -5,13 +5,14 @@ import ExclamationpointWhite from '../../assets/exclamation-pointWhite.png'
 import Attention from '../../assets/Attention.png'
 import { BiRightArrow } from 'react-icons/bi'
 import Voice from '../../assets/Voice.png'
-export const AttentionPopup = ({ show, setShow, setListen }) => {
+export const AttentionPopup = ({ show, setShow, setListen, startListening }) => {
 
     const [active, setActive] = useState(false)
     const hidePopup = () => {
         setShow(false);
         setActive(false)
         setListen(true)
+        startListening()
     };
 
     return (

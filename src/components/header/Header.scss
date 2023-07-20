@@ -9,7 +9,7 @@
     z-index: 100;
 }
 
-.circle {
+.circleMenu {
     width: 100px;
     height: 100px;
     background: radial-gradient(#b0e633, #53ef7d);
@@ -19,12 +19,12 @@
     transition: 0.1s;
 }
 
-.circle {
+.circleMenu {
     top: 50px;
     left: -52px;
 }
 
-.circle.inActive {
+.circleMenu.inActive {
     height: 0;
 }
 

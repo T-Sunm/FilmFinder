@@ -12,17 +12,57 @@ import LoadingSkeleton from "../../../components/Loading/LoadingSkeleton";
 const VideosSection = ({ id, mediaType, loading }) => {
     const [show, setShow] = useState(false);
     const [videoId, setVideoId] = useState(null);
+    const breakpoints = {
+        // Hiển thị 3 slide trên viewport nhỏ hơn 640px
+        320: {
+            slidesPerView: 2,
+            spaceBetween: 5,
+        },
+        480: {
+            slidesPerView: 3,
+            spaceBetween: 5,
+        },
+        580: {
+            slidesPerView: 4,
+            spaceBetween: 5,
+        },
+        680: {
+            slidesPerView: 4,
+            spaceBetween: 5,
+        },
+        // Hiển thị 4 slide trên viewport từ 768px đến 1024px
+        768: {
+            slidesPerView: 4,
+            spaceBetween: 5,
+        },
+        868: {
+            slidesPerView: 4,
+            spaceBetween: 5,
+        },
+        968: {
+            slidesPerView: 4,
+            spaceBetween: 5,
+        },
+        // Hiển thị 6 slide trên viewport lớn hơn 1024px
+        1024: {
+            slidesPerView: 5,
+            spaceBetween: 5,
+        },
+        1124: {
+            slidesPerView: 6,
+            spaceBetween: 6,
+        },
+    };
 
     const data = useFetch(`/${mediaType}/${id}/videos?language=en-US`)
     return (
-        <div className="px-14 my-[50px]">
-            <div className="">
+        <div className="px-14 my-[50px] mobile:mt-[10%]">
+            <div className="items-center">
                 <BtnCategory title={'Official Videos'} />
                 {!loading && data ? (
                     <div className="my-4">
                         <Swiper
-                            spaceBetween={50}
-                            slidesPerView={5}
+                            breakpoints={breakpoints}
                             onSlideChange={() => console.log('slide change')}
                             onSwiper={(swiper) => console.log(swiper)}
                         >
@@ -44,8 +84,7 @@ const VideosSection = ({ id, mediaType, loading }) => {
                     </div>
                 ) : (
                     <Swiper
-                        spaceBetween={50}
-                        slidesPerView={5}
+                        breakpoints={breakpoints}
                         onSlideChange={() => console.log('slide change')}
                         onSwiper={(swiper) => console.log(swiper)}
                     >

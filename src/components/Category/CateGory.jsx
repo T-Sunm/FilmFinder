@@ -9,7 +9,6 @@ export const CateGory = ({ type, title, id }) => {
 
     const [movies, setMovies] = useState([])
     const { data, loading } = useFetch(`/${type}/${id}/similar?language=en-US&page=1`)
-    console.log(data)
     useEffect(() => {
         if (data) {
             setMovies(data.results)
@@ -58,7 +57,7 @@ export const CateGory = ({ type, title, id }) => {
     };
     return (
         <div className='px-4 ' id='trending'>
-            <div className='flex items-center justify-between mb-[30px] px-10'>
+            <div className='flex items-center mobile:justify-center mb-[30px] px-10 mobile:px-0'>
                 <BtnCategory title={title} />
             </div>
             <div className='px-20'>
@@ -66,7 +65,7 @@ export const CateGory = ({ type, title, id }) => {
                     <Swiper breakpoints={breakpoints}>
                         {Array(6).fill(0).map((item, i) => (
                             <SwiperSlide key={i}>
-                                <div className='w-[220px] h-[300px]'>
+                                <div className=' h-[300px]'>
                                     <CateGoryItemLoading />
                                 </div>
                             </SwiperSlide>

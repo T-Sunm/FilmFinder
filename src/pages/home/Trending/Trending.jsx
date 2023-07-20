@@ -15,11 +15,9 @@ export const Trending = () => {
     const [endpoint, setEndPoint] = useState("day")
     const [movies, setMovies] = useState([])
     const { data, loading } = useFetch(`/trending/movie/${endpoint}?language=en-US`)
-    console.log(data)
     useEffect(() => {
         if (data) {
             setMovies(data.results)
-            console.log(movies?.title)
         }
     }, [data])
     const onTabChange = (tab) => {
@@ -77,7 +75,7 @@ export const Trending = () => {
     };
     return (
         <div className='px-4' id='trending'>
-            <div className='flex items-center justify-between mt-5 mb-[30px] relative px-10'>
+            <div className='flex items-center justify-between mt-5 mb-[30px] relative px-10 mobile:px-0'>
 
                 <BtnCategory title={"Trending"} />
                 <SwitchTabs data={["Day", "Week"]} onTabChange={onTabChange} />

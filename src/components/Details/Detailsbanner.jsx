@@ -41,12 +41,14 @@ export const Detailsbanner = ({ urlBackdrop, pathBackDrop, urlPoster, pathPoster
       after:left-0
       after:w-full
       after:h-[100px]
-      after:bg-gradient-to-t from-bg_black to-transparent' style={{ backgroundImage: `url(${urlBackdrop + pathBackDrop})` }}>
-            <div className='w-[20%] relative min-w-[270px]'>
+      after:bg-gradient-to-t from-bg_black to-transparent
+      mobile:pt-[60px]
+      ' style={{ backgroundImage: `url(${urlBackdrop + pathBackDrop})` }}>
+            <div className='w-[20%] relative min-w-[270px] mobile:hidden'>
                 <img src={`${urlPoster + pathPoster}`} className='rounded-lg' />
             </div>
-            <div className='w-[60%] relative'>
-                <h1 className='text-3xl'>
+            <div className='w-[60%] mobile:w-[90%] relative'>
+                <h1 className='text-3xl mobile:text-2xl'>
                     {title} ({Year})
                 </h1>
                 <p className='italic my-2'>{tagLine}</p>
@@ -76,7 +78,7 @@ export const Detailsbanner = ({ urlBackdrop, pathBackDrop, urlPoster, pathPoster
                     <h1 className='text-xl font-medium'>
                         Overview
                     </h1>
-                    <p className='my-2'>
+                    <p className='my-2 mobile:text-[13px]'>
                         {overview}
                     </p>
                 </div>

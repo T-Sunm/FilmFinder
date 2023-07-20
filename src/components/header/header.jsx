@@ -44,10 +44,10 @@ export const Header = () => {
     }, [])
 
     return (
-        <div className={`navbar ${trans} fixed z-10 `}>
-            <div className="navbar-start cursor-pointer">
-                <img src={Logo} alt="" className='w-[50px]' onClick={() => navigate("/")} />
-                <a className="normal-case text-xl">FilmFinder</a>
+        <div className={`navbar ${trans} fixed z-50 `}>
+            <div className="navbar-start cursor-pointer" onClick={() => navigate("/")}>
+                <img src={Logo} alt="" className='w-[50px] mobile:w-[30px]' />
+                <a className="normal-case text-xl mobile:text-lg">FilmFinder</a>
             </div>
             <div className="navbar-end">
                 <ButtonSearch />
@@ -55,16 +55,16 @@ export const Header = () => {
             <div >
                 <div ref={MenuRef} className="relative">
                     <label className="btn btn-ghost btn-circle" onClick={() => setToggleMenu(!toggleMenu)}>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>
                     <div className={`container-menu`} style={{ maxHeight: getHeight() }} >
                         <ul className={`menu menu-sm mt-3 z-[1] p-2 shadow  rounded-box w-52 `}>
                             <li><Link to={"/FilmFinder/movie"}>Movies</Link></li>
                             <li><Link to={"/FilmFinder/tv"}>TvShows</Link></li>
-                            <li className=''><a>DarkMode <SwapDarkMode /></a> </li>
+                            <li className=''><span>DarkMode <SwapDarkMode /></span> </li>
                         </ul>
                     </div>
-                    <div class={`circle ${toggleMenu ? '' : 'inActive'}`}></div>
+                    <div className={`circleMenu ${toggleMenu ? '' : 'inActive'}`}></div>
                 </div>
             </div>
         </div>

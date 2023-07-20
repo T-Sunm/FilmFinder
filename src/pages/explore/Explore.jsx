@@ -132,7 +132,7 @@ export const Explore = () => {
                     </div>
                 </div>
                 {!loading && (
-                    <div className='grid grid-cols-6 px-[84px]'>
+                    <div className='grid gap-3 grid-cols-6 px-[84px] mobile:px-2 laptop:grid-cols-5 tablet:grid-cols-4 mobile:grid-cols-3'>
                         {data?.results?.length > 0 ? (
                             data.results.map((movie, key) => (
                                 <CategoryItem key={key} pathPoster={movie?.poster_path} voteAverage={movie?.vote_average} date={movie?.release_date} title={movie?.title} genreIds={movie?.genre_ids} />

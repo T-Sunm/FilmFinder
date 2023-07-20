@@ -6,7 +6,7 @@ import { Link } from 'react-scroll'
 import './SideSmoothScroll.css'
 export const SideSmoothScroll = () => {
     return (
-        <div className=' top-[50%] flex flex-col codepen-button2 '>
+        <div className=' top-[50%] flex flex-col codepen-button2 mobile:hidden '>
             <div className='cursor-pointer mb-1'>
                 <Link
                     to={'home'}

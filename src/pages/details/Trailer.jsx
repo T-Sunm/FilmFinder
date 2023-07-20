@@ -8,7 +8,6 @@ export const Trailer = ({ id, mediaType }) => {
     useEffect(() => {
         if (data) {
             const Trailers = data?.data?.results?.filter((result) => result.name.includes("Official") && result.type === "Trailer")
-            console.log(Trailers)
             if (Trailers && Trailers.length > 0) {
                 setTrailer(Trailers[0].key)
             }
