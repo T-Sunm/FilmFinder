@@ -5,7 +5,6 @@ import { fetchDatafromApi } from '../../Utils/GetdatafromApi';
 import { useParams } from 'react-router-dom';
 import useFetch from '../../Hooks/useFetch';
 import './Explore.scss'
-import Footer2 from '../../components/Footer/Footer2';
 import { CateGoryItemLoading } from '../../components/Category/CateGoryItemLoading';
 
 let filters = {};
@@ -155,7 +154,6 @@ export const Explore = () => {
                     </div>
                 )}
             </div>
-            <Footer2 />
         </>
     )
 }
