@@ -4,7 +4,6 @@ import useFetch from '../../Hooks/useFetch'
 import { CategoryItem } from '../../components/Category/CategoryItem'
 import { BtnLoadmore } from '../../components/Button/BtnLoadmore'
 import noPoster from '../../assets/no-poster.png'
-import { Footer } from '../../components/Footer/Footer'
 import { Loader } from '../../components/Loading/Loader'
 export const SearchResult = () => {
 
@@ -45,7 +44,6 @@ export const SearchResult = () => {
                         <BtnLoadmore onNext={nextPage} />
                     </div>
                 </div>
-                <Footer />
             </div>
         </>
     )
